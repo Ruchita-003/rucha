@@ -141,11 +141,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const scrollDownSoundtrack = document.getElementById('scrollDownSoundtrack');
+    if (scrollDownSoundtrack) {
+        scrollDownSoundtrack.addEventListener('click', () => {
+            currentPage = 4; // Index of pageFinal in scrollPages array
+            showPage(pageFinal);
+        });
+    }
+
     // Page 1: "Yes" button click
     yesBtn.addEventListener('click', () => {
         currentPage = -1; // Disable scroll navigation
         showPage(page2);
         startFallingHearts();
+
+        // Play background music
+        const bgMusic = document.getElementById('bgMusic');
+        if (bgMusic) {
+            bgMusic.volume = 0.5; // Set volume to 50%
+            bgMusic.play().catch(e => console.log("Audio play failed:", e));
+        }
     });
 
     // Falling Hearts Logic
