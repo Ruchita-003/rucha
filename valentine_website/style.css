@@ -1,0 +1,856 @@
+body {
+    background-color: #ffe6e6;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+    width: 750px;
+    margin: 20px auto;
+    transition: background-color 0.5s ease;
+    /* Smooth transition for background change */
+    position: relative;
+    /* Restrict absolute positioning to inside the container */
+}
+
+/* Change container background to pink when final page is active */
+.container:has(#pageFinal.active) {
+    background-color: #ffb6c1;
+}
+
+.official-invite {
+    color: #ff4d6d;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+h1 {
+    color: #000;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0px #ddd,
+        3px 3px 0px #bbb;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    /* Increased gap */
+    height: 60px;
+}
+
+.btn {
+    padding: 10px 40px;
+    /* Wider button */
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 15px;
+    /* Smoother rounded rectangle */
+    cursor: pointer;
+    font-weight: 500;
+    /* Regular weight */
+    transition: transform 0.2s ease;
+}
+
+.yes-btn {
+    background: linear-gradient(180deg, #ff4d6d 0%, #d63354 100%);
+    /* Gradient Red/Pink */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff3355;
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+}
+
+.no-btn {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    /* Gray outline */
+    color: #333;
+}
+
+/* Page visibility */
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+    animation: fadeIn 1.2s ease-in;
+}
+
+/* Surprising Pop-In Animation for Page 2 */
+#page2.active {
+    display: block;
+    animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollable pages */
+.scrollable {
+    overflow-y: auto;
+    max-height: 70vh;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for the entire body */
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Virtual Date Ideas */
+.date-ideas {
+    margin: 20px 0;
+}
+
+.idea-item {
+    background: #fff0f5;
+    padding: 12px 20px;
+    /* Increased padding slightly for larger feel */
+    margin: 15px 0;
+    /* Increased margin for more distance between lines */
+    border-radius: 12px;
+    /* Smoother corners */
+    border-left: 5px solid #ff4d6d;
+    /* Slightly thicker border */
+    text-align: left;
+    font-size: 0.95rem;
+    /* Increased slightly but kept small enough to fit one line */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* Subtle shadow for depth */
+}
+
+.scroll-hint,
+.scroll-arrow {
+    color: #ff4d6d;
+    font-weight: bold;
+    margin-top: 30px;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.scroll-arrow:hover {
+    background: #ffe6e6;
+    transform: scale(1.1);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Envelope Page */
+.envelope-hint {
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.envelope {
+    width: 200px;
+    height: 140px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: scale(1.1);
+}
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: #ff69b4;
+    border-radius: 10px;
+}
+
+.envelope-flap {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid #ff1493;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.memories-title {
+    color: #ff4d6d;
+    margin-top: 50px;
+}
+
+.memories-hint {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Letter Page */
+.letter-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    /* Reduced from 30px */
+    perspective: 1000px;
+    /* Enable 3D space */
+}
+
+/* ... existing styles ... */
+
+.back-btn {
+    background-color: #ff4d6d;
+    color: white;
+    margin-top: 10px;
+    /* Reduced from 20px */
+}
+
+.back-btn:hover {
+    background-color: #ff3355;
+    transform: scale(1.05);
+}
+
+#scrollDownLetter {
+    margin-top: 5px;
+    /* specific override for letter page scroll arrow */
+}
+
+.letter-paper {
+    background: #fffacd;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    text-align: left;
+    transform-origin: center bottom;
+    /* Will be animated when parent is active */
+}
+
+/* 3D Pop Animation for Letter Paper */
+#pageLetter.active .letter-paper {
+    animation: letterPop3D 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes letterPop3D {
+    0% {
+        opacity: 0;
+        transform: translateY(100px) rotateX(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+    }
+}
+
+/* Interactive Envelope Styles */
+.envelope-container {
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 20px auto;
+    width: 300px;
+    height: 200px;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ff4d6d;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+/* Excited Envelope Animation - "Pude mage" / Pulse */
+#pageEnvelope.active .envelope:not(.open) {
+    animation: excited 0.35s infinite alternate ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* Initial shadow */
+}
+
+@keyframes excited {
+    0% {
+        transform: scale(1) translateZ(0);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    100% {
+        transform: scale(1.15) translateZ(50px);
+        /* Move forward significantly */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        /* Shadow grows as it gets closer */
+    }
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+    /* This might conflict with animation, but animation takes precedence in keyframes usually. 
+       Let's keep it simple and just use the animation. */
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #ff758c;
+    /* Lighter pink for flap */
+    transform-origin: top;
+    transition: transform 0.4s ease-in-out;
+    z-index: 5;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff4d6d;
+    z-index: 2;
+    /* Covers the letter initially */
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+    /* Basic envelope shape overlap */
+}
+
+/* Make sure the body looks like an envelope pocket */
+.envelope::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid #ff4d6d;
+    border-right: 150px solid #ff4d6d;
+    border-bottom: 100px solid #ff3355;
+    /* Darker pink for pocket */
+    border-top: 100px solid transparent;
+    z-index: 4;
+}
+
+.letter-preview {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+    background-color: white;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.6s ease-in-out 0.4s;
+    /* Delay for flap */
+    z-index: 3;
+    /* Inside the pocket */
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-preview h2 {
+    font-size: 1.2rem;
+    color: #ff4d6d;
+    margin: 0;
+}
+
+.letter-preview p {
+    font-size: 0.8rem;
+    color: #000;
+}
+
+.envelope.open .letter-preview {
+    transform: translateY(-120px);
+    /* Slide out */
+    z-index: 6;
+    /* Go above pocket */
+}
+
+.letter-greeting {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.letter-text {
+    line-height: 1.8;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.letter-signature {
+    text-align: right;
+    font-style: italic;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.back-btn {
+    background-color: #ff4d6d;
+    color: white;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #ff3355;
+    transform: scale(1.05);
+}
+
+/* Page 2 Styles */
+.celebration-text {
+    color: #ff4d6d;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    /* Reduced margin */
+    animation: fadeIn 1s ease-in;
+}
+
+.success-heading {
+    font-size: 2.2rem;
+    /* Reduced font size */
+    margin-bottom: 10px;
+    /* Reduced margin */
+    animation: celebrate 1s ease-out;
+}
+
+.romantic-message {
+    font-size: 1rem;
+    /* Reduced font size */
+    color: #000;
+    line-height: 1.4;
+    margin: 10px 0;
+    /* Reduced margin */
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.image-container img {
+    max-width: 100%;
+    /* Keep width responsive */
+    width: 200px;
+    /* Force smaller width */
+    border-radius: 15px;
+    margin: 10px 0;
+    /* Reduced margin */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.forever-text {
+    color: #ff4d6d;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.sub-text {
+    color: #000;
+    /* Darker than #888 */
+    font-size: 1rem;
+    /* Slightly larger, like an h3 subtitle */
+    margin-top: 15px;
+    /* Reduced margin */
+    font-weight: 500;
+}
+
+.secondary-btn {
+    background-color: #f5f5f5;
+    /* Faint Grey */
+    border: 2px solid #ccc;
+    color: #000;
+    /* Black text */
+    margin-top: 10px;
+}
+
+/* Page 3 Styles */
+.warning {
+    color: #ff4d6d;
+    font-size: 2.5rem;
+}
+
+.consequences {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 30px auto;
+    width: fit-content;
+}
+
+.consequences li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.final-text {
+    color: #ff4d6d;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+/* Soundtrack Page */
+.soundtrack-subtitle {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.songs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 10px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-align: left;
+}
+
+.song-card:hover {
+    transform: scale(1.02);
+}
+
+/* Card Specific Colors */
+
+
+.card-tumho {
+    background-color: #6d6d4e;
+    /* Olive/Brown fallback */
+    background: linear-gradient(to right, #555540, #7a7a55);
+}
+
+.card-tuhai {
+    background-color: #c9302c;
+    /* Red fallback */
+    background: linear-gradient(to right, #a02020, #d03030);
+}
+
+.card-okjaanu {
+    background-color: #004d40;
+    /* Teal/Dark Green fallback */
+    background: linear-gradient(to right, #004d40, #00695c);
+}
+
+.card-merebina {
+    background-color: #263238;
+    /* Blue Grey/Dark Petrol fallback */
+    background: linear-gradient(to right, #263238, #37474f);
+}
+
+.song-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 12px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.song-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.song-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.song-artist {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-save {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+}
+
+.spotify-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.song-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 10px;
+}
+
+.control-icon {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.play-btn-circle {
+    width: 35px;
+    height: 35px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1rem;
+    padding-left: 2px;
+    /* Visual center adjustment */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.song-card:hover .play-btn-circle {
+    transform: scale(1.1);
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    /* Aligned with padding */
+    right: 10px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 30%;
+    /* Mock progress */
+    height: 100%;
+    background: white;
+    border-radius: 2px;
+}
+
+/* Final Forever Page Styles */
+#pageFinal.active {
+    animation: fadeIn 1.2s ease-in;
+    overflow: hidden;
+    /* No scroll */
+}
+
+.final-card {
+    background-color: #ffb6c1;
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Ensure container doesn't show white background when final page is active */
+
+
+.forever-title {
+    font-size: 2.8rem;
+    color: #000;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.forever-content p {
+    color: #000;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+}
+
+.forever-msg-1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.forever-msg-2 {
+    font-size: 1.1rem;
+    max-width: 90%;
+    margin: 0 auto !important;
+}
+
+.forever-msg-3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff4d6d !important;
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+    /* Added more space below */
+}
+
+.forever-msg-credits {
+    font-size: 1rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 3rem !important;
+    /* Added more space below */
+}
+
+.forever-msg-ps {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    opacity: 0.8;
+}
+
+/* Falling Hearts */
+.falling-heart {
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    user-select: none;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        top: 110%;
+        transform: translateX(100px) rotate(360deg);
+        /* Drifts right and rotates */
+        opacity: 0;
+    }
+}

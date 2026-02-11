@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Your Valentine 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Page 1: The Question -->
+        <div id="page1" class="page active">
+            <h1>Baby,<br>will you be my Valentine? 💖</h1>
+            <p class="official-invite">Official invite from your girlfriend ❤️</p>
+            <div class="buttons">
+                <button id="yesBtn" class="btn yes-btn">YES</button>
+                <button id="noBtn" class="btn no-btn">NO</button>
+            </div>
+        </div>
+
+        <!-- Page 1.5: Virtual Date Ideas (Scrollable) -->
+        <div id="pageVirtualDates" class="page hidden scrollable">
+            <h1>Our Virtual Date Ideas 📱</h1>
+            <div class="date-ideas">
+                <div class="idea-item">🎂 Netflix party + video call (I'll let you pick... maybe)</div>
+                <div class="idea-item">🍕 Order the same food together & judge each other's eating habits</div>
+                <div class="idea-item">💤 Late night talks that somehow turn into sleeping thing</div>
+                <div class="idea-item">🎵 Playlist exchange & argue about music taste (you're wrong btw)</div>
+                <div class="idea-item">📸 Send me your selfies so I can simp shamelessly 😌</div>
+                <div class="idea-item">🎮 Play games together & watch you absolutely destroy me</div>
+                <div class="idea-item">☕ Virtual coffee dates where we pretend we're fancy</div>
+            </div>
+            <div class="scroll-arrow" id="scrollDown2">
+                <p>👇 Continue scrolling 👇</p>
+            </div>
+        </div>
+
+        <!-- Page 4: Final Forever Page -->
+        <div id="pageFinal" class="page hidden">
+            <div class="final-card">
+                <h1 class="forever-title">You are my forever 🧿❤️!</h1>
+                <div class="forever-content">
+                    <p class="forever-msg-1">I love you more than words can say. ❤️</p>
+                    <p class="forever-msg-2">No matter where life takes us, my heart will always choose you. Thank you
+                        for
+                        being my peace, my smile, my love.</p>
+                    <p class="forever-msg-3">Happy valentine day baby i love you so so much</p>
+                    <p class="forever-msg-credits">Made with Love+ mehant by your immature girlfriend ❤️</p>
+                    <p class="forever-msg-ps">P.S I love you more than you love food</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 1.6: Secret Envelope -->
+        <div id="pageEnvelope" class="page hidden">
+            <h1>A Secret Note For You 💌</h1>
+            <p class="envelope-hint">Click the envelope to open it...</p>
+            <div class="envelope-container">
+                <div class="envelope" id="envelopeBtn">
+                    <div class="envelope-flap"></div>
+                    <div class="letter-preview">
+                        <h2>Read Me 🥺</h2>
+                        <p>Click to see...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 1.7: Letter -->
+        <div id="pageLetter" class="page hidden scrollable">
+            <h1>A Letter For You 🥺</h1>
+            <div class="letter-container">
+                <div class="letter-paper">
+                    <p class="letter-greeting">My Baby,</p>
+                    <p class="letter-text">Thank you for being my person. I want to hold your hand through every season
+                        of life. You are my home. You are my everything, and I love you so so much. Be the same as you
+                        are and no sorry for irritating you. No one can replace you from my heart, ur always be my no.1.
+                    </p>
+                    <p class="letter-signature">Forever yours ❤️</p>
+                </div>
+            </div>
+            <button id="backBtn" class="btn back-btn">← BACK</button>
+            <div class="scroll-arrow" id="scrollDown4">
+                <p>👇 Scroll down for more 👇</p>
+            </div>
+        </div>
+
+        <!-- Page 1.8: Our Soundtrack -->
+        <div id="pageSoundtrack" class="page hidden scrollable">
+            <h1>Our Soundtrack 🎵</h1>
+            <p class="soundtrack-subtitle">Songs that make me think of you (aka I can't listen to these without smiling
+                like an idiot)</p>
+
+            <div class="songs-container">
+
+
+                <!-- Song 2: Tum Ho Toh -->
+                <div class="song-card card-tumho" data-song="tumho">
+                    <div class="song-cover">
+                        <img src="assets/tumho.jpg" alt="Tum Ho Toh">
+                    </div>
+                    <div class="song-details">
+                        <h3 class="song-title">Tum Ho Toh (From "Saiyaara")</h3>
+                        <p class="song-artist">Vishal Mishra</p>
+                        <p class="song-save"><span class="spotify-icon">◎</span> Save on Spotify</p>
+                    </div>
+                    <div class="song-controls">
+                        <span class="control-icon heart-icon">♡</span>
+                        <div class="play-btn-circle">▶</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Song 3: Tu Hai Meri -->
+                <div class="song-card card-tuhai" data-song="tuhai">
+                    <div class="song-cover">
+                        <img src="assets/tuhai.jpg" alt="Tu Hai Meri">
+                    </div>
+                    <div class="song-details">
+                        <h3 class="song-title">Tu Hai Meri (From "Sunny")</h3>
+                        <p class="song-artist">Sachet-Parampara</p>
+                        <p class="song-save"><span class="spotify-icon">💕</span> Save on Spotify</p>
+                    </div>
+                    <div class="song-controls">
+
+                        <span class="control-icon heart-icon">♡</span>
+                        <div class="play-btn-circle">▶</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Song 4: Ok Jaanu Title Track -->
+                <div class="song-card card-okjaanu" data-song="okjaanu">
+                    <div class="song-cover">
+                        <img src="assets/okjaanu.jpg" alt="Ok Jaanu Title Track">
+                    </div>
+                    <div class="song-details">
+                        <h3 class="song-title">Ok Jaanu Title Track</h3>
+                        <p class="song-artist">A.R. Rahman, Srinidhi Venkatesh</p>
+                        <p class="song-save"><span class="spotify-icon">◎</span> Save on Spotify</p>
+                    </div>
+                    <div class="song-controls">
+                        <span class="control-icon heart-icon">♡</span>
+                        <div class="play-btn-circle">▶</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Song 5: Mere Bina -->
+                <div class="song-card card-merebina" data-song="merebina">
+                    <div class="song-cover">
+                        <img src="assets/merebina.jpg" alt="Mere Bina">
+                    </div>
+                    <div class="song-details">
+                        <h3 class="song-title">Mere Bina (From "Crook")</h3>
+                        <p class="song-artist">Pritam, Nikhil D'Souza</p>
+                        <p class="song-save"><span class="spotify-icon">◎</span> Save on Spotify</p>
+                    </div>
+                    <div class="song-controls">
+                        <span class="control-icon heart-icon">♡</span>
+                        <div class="play-btn-circle">▶</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden audio players -->
+
+            <audio id="audioTumho" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+            <audio id="audioTuhai" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
+        </div>
+
+        <!-- Page 2: Good Choice -->
+        <div id="page2" class="page hidden">
+            <p class="celebration-text">Yay!!! Best decision ever 😘</p>
+            <h1 class="success-heading">Happy Valentine Day baby ❤️</h1>
+            <p class="romantic-message">Every second with you is a celebration,<br>You are the spark that makes my world
+                so much brighter</p>
+            <div class="image-container">
+                <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Cute cats hugging"
+                    class="cats-img">
+            </div>
+            <p class="forever-text">Now you're stuck with me forever ∞</p>
+            <p class="sub-text">Wait... do you want to change your mind? 🤔</p>
+            <button id="actuallyNoBtn" class="btn secondary-btn">Actually... No 😈</button>
+        </div>
+
+        <!-- Page 3: Prank/Too Late -->
+        <div id="page3" class="page hidden">
+            <h1 class="warning">TOO LATE! 😂</h1>
+            <p>You already said YES, which means:</p>
+            <ul class="consequences">
+                <li>❌ No take-backs allowed</li>
+                <li>❌ You're legally mine now (I checked)</li>
+                <li>❌ Every "no" from now on = 10 extra kisses when we meet</li>
+                <li>✅ You're stuck with your immature girlfriend FOREVER🫠</li>
+            </ul>
+            <p class="final-text">Deal with it 😭💕</p>
+            <div class="scroll-arrow" id="scrollDown3">
+                <p>👇 Scroll down for more 👇</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
