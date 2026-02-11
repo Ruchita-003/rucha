@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('noBtn');
     const actuallyNoBtn = document.getElementById('actuallyNoBtn');
     const envelopeBtn = document.getElementById('envelopeBtn');
-    const backBtn = document.getElementById('backBtn');
+    // backBtn removed
 
     const page1 = document.getElementById('page1');
     const pageVirtualDates = document.getElementById('pageVirtualDates');
@@ -151,16 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Page 1: "Yes" button click
     yesBtn.addEventListener('click', () => {
+        // Play background music IMMEDIATELY
+        const bgMusic = document.getElementById('bgMusic');
+        if (bgMusic) {
+            bgMusic.volume = 0.5;
+            bgMusic.play().catch(e => console.log("Audio play failed:", e));
+        }
+
         currentPage = -1; // Disable scroll navigation
         showPage(page2);
         startFallingHearts();
-
-        // Play background music
-        const bgMusic = document.getElementById('bgMusic');
-        if (bgMusic) {
-            bgMusic.volume = 0.5; // Set volume to 50%
-            bgMusic.play().catch(e => console.log("Audio play failed:", e));
-        }
     });
 
     // Falling Hearts Logic
@@ -233,13 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Back button - returns to envelope page
-    if (backBtn) {
-        backBtn.addEventListener('click', () => {
-            currentPage = 2; // Index of pageEnvelope
-            showPage(pageEnvelope);
-        });
-    }
+    // Back button listener removed
 
     // Page 2: "Actually... No" button - moves 3 times then goes to page 3
     let actuallyNoMoveCount = 0;
