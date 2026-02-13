@@ -625,6 +625,13 @@ body::-webkit-scrollbar {
 /* Card Specific Colors */
 
 
+
+.card-ishq {
+    background-color: #ff4d6d;
+    /* Reddish Pink fallback */
+    background: linear-gradient(to right, #ff4d6d, #ff758c);
+}
+
 .card-tumho {
     background-color: #6d6d4e;
     /* Olive/Brown fallback */

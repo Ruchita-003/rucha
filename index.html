@@ -96,6 +96,25 @@
 
             <div class="songs-container">
 
+                <!-- Song 1: Ishq Wala Love -->
+                <div class="song-card card-ishq" data-song="ishq">
+                    <div class="song-cover">
+                        <img src="assets/ishq.jpg" alt="Ishq Wala Love">
+                    </div>
+                    <div class="song-details">
+                        <h3 class="song-title">Ishq Wala Love (From "Student of the Year")</h3>
+                        <p class="song-artist">Neeti Mohan, Salim Merchant</p>
+                        <p class="song-save"><span class="spotify-icon">💕</span> Save on Spotify</p>
+                    </div>
+                    <div class="song-controls">
+                        <span class="control-icon heart-icon">♡</span>
+                        <div class="play-btn-circle">▶</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
 
                 <!-- Song 2: Tum Ho Toh -->
                 <div class="song-card card-tumho" data-song="tumho">
@@ -177,8 +196,14 @@
 
             <!-- Hidden audio players -->
 
-            <audio id="audioTumho" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-            <audio id="audioTuhai" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"></audio>
+            <!-- Hidden audio players -->
+
+            <!-- Note: bgMusic is used for background, audioIshq is for the song card -->
+            <audio id="audioIshq" src="assets/song_ishqwala.mp3"></audio>
+            <audio id="audioTumho" src="assets/Tum_Ho_Toh.mp3"></audio>
+            <audio id="audioTuhai" src="assets/Tu_Hai_meri.mp3"></audio>
+            <audio id="audioOkJaanu" src="assets/OK_Jaanu.mp3"></audio>
+            <audio id="audioMereBina" src="assets/Mere_Bina.mp3"></audio>
             <audio id="bgMusic" src="assets/ishqwala.mp3" loop preload="auto"></audio>
 
             <div class="scroll-arrow" id="scrollDownSoundtrack">

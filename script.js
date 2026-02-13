@@ -105,6 +105,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 envelope.classList.remove('open');
             }
         }
+
+        // Logic for page transitions regarding audio
+        // When leaving soundtrack page (or specifically entering Final page), resume main bg music
+        if (pageToShow === pageFinal) {
+            const bgMusic = document.getElementById('bgMusic');
+            const songAudios = [
+                document.getElementById('audioIshq'),
+                document.getElementById('audioTumho'),
+                document.getElementById('audioTuhai'),
+                document.getElementById('audioOkJaanu'),
+                document.getElementById('audioMereBina')
+            ];
+
+            // Stop all song-specific audios
+            songAudios.forEach(a => {
+                if (a) {
+                    a.pause();
+                    a.currentTime = 0; // Reset
+                }
+            });
+
+            // Ensure background music is playing
+            if (bgMusic && bgMusic.paused) {
+                bgMusic.volume = 0.5;
+                bgMusic.play().catch(e => console.log("Resume bgMusic failed:", e));
+            }
+        }
     }
 
     // Click handlers for scroll arrows (backup navigation)
@@ -278,5 +305,73 @@ document.addEventListener('DOMContentLoaded', () => {
         moveActuallyNoButton();
     });
 
+
+    // Audio Player Logic
+    const audioMap = {
+        'ishq': document.getElementById('audioIshq'),
+        'tumho': document.getElementById('audioTumho'),
+        'tuhai': document.getElementById('audioTuhai'),
+        'okjaanu': document.getElementById('audioOkJaanu'),
+        'merebina': document.getElementById('audioMereBina')
+    };
+
+    const bgMusic = document.getElementById('bgMusic');
+
+    const songCards = document.querySelectorAll('.song-card');
+
+    songCards.forEach(card => {
+        const playBtn = card.querySelector('.play-btn-circle');
+        const songKey = card.getAttribute('data-song');
+        const audio = audioMap[songKey];
+
+        if (playBtn && audio) {
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent card click event if any
+
+                const isPlaying = !audio.paused;
+
+                // Stop background music
+                if (bgMusic) {
+                    bgMusic.pause();
+                }
+
+                // Stop all other song audios
+                Object.values(audioMap).forEach(a => {
+                    if (a && a !== audio) {
+                        a.pause();
+                        a.currentTime = 0;
+                    }
+                });
+
+                if (isPlaying) {
+                    audio.pause();
+                } else {
+                    audio.volume = 1.0; // Ensure volume is up
+                    audio.play().catch(e => console.error("Playback failed", e));
+                }
+            });
+        }
+    });
+
+    // Update UI based on audio state
+    Object.entries(audioMap).forEach(([key, audio]) => {
+        if (!audio) return;
+        const card = document.querySelector(`.song-card[data-song="${key}"]`);
+        const btn = card ? card.querySelector('.play-btn-circle') : null;
+
+        if (btn) {
+            audio.addEventListener('play', () => {
+                btn.textContent = '❚❚';
+            });
+
+            audio.addEventListener('pause', () => {
+                btn.textContent = '▶';
+            });
+
+            audio.addEventListener('ended', () => {
+                btn.textContent = '▶';
+            });
+        }
+    });
 
 });
